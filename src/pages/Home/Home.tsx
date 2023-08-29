@@ -237,11 +237,13 @@ export default function Home() {
   const handleFillByIndex = (index: number) => {
     setRandomPicture(ArrayFillterForm[index])
     setcheckErrorMessage('')
+    setcheckShowAnswer(false)
   }
 
   const handleOnchangAnswer = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
     let { value } = event.target
     setcheckErrorMessage(value)
+    setcheckShowAnswer(false)
   }
 
   const handleMessageError = (answer: string) => {
