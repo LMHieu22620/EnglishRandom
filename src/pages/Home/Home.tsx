@@ -224,6 +224,7 @@ const REGEX = /[^a-zA-Z0-9]/g
 export default function Home() {
   const [randomPicture, setRandomPicture] = useState<Props>(ArrayFillterForm[0])
   const [checkErrorMessage, setcheckErrorMessage] = useState('')
+  const [checkShowAnswer, setcheckShowAnswer] = useState(false)
 
   const randomQuestion = (arr: Props[]) => {
     const randomIndex = Math.floor(Math.random() * arr.length)
@@ -247,16 +248,16 @@ export default function Home() {
     if (checkErrorMessage === '') {
       return 'Viết đi để ra trường kìa '
     } else if (answer.length - checkErrorMessage.length >= 3) {
-      return 'Ráng lên , đúng thầy cho ly trà sữa'
+      return 'Ráng lên, đúng thầy cho ly trà sữa'
     } else if (
       answer.length - checkErrorMessage.length <= 3 &&
       checkErrorMessage.toLocaleLowerCase().replace(REGEX, '') !== answer.toLocaleLowerCase().replace(REGEX, '')
     ) {
-      return 'Ráng lên ,  gần được ly trà sữa rồi đó'
+      return 'Ráng lên, gần được ly trà sữa rồi đó'
     } else if (
       checkErrorMessage.toLocaleLowerCase().replace(REGEX, '') === answer.toLocaleLowerCase().replace(REGEX, '')
     ) {
-      return 'Đúng rồi ,chúc mừng em, đúng hết 35 câu thầy cho ly trà sữa'
+      return 'Đúng rồi, chúc mừng em, đúng hết 35 câu thầy cho ly trà sữa'
     }
   }
 
@@ -285,10 +286,18 @@ export default function Home() {
             </div>
           </div>
         </div>
+        {checkShowAnswer && <div className='mt-3  lg:text-2xl text-[#05a]'>{randomPicture.answer}</div>}
+
         <div className='mt-3  lg:text-2xl text-orange'>{handleMessageError(randomPicture.answer)} </div>
         <div>
           <button className='mt-3 p-4 text-white hover:bg-orange/95 bg-orange' onClick={handleRandom}>
             RandomPicture
+          </button>
+          <button
+            className='mt-3 ml-2 p-4 text-white hover:bg-orange/95 bg-orange'
+            onClick={() => setcheckShowAnswer(!checkShowAnswer)}
+          >
+            ShowAnswer
           </button>
         </div>
       </div>
