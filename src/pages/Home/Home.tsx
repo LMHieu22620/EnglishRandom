@@ -196,7 +196,7 @@ const ArrayFillterForm = [
   {
     id: 32,
     image: '/anh33.jpg',
-    suggest: '33.what/ present / confused',
+    suggest: '33.hard/ so that / pass',
     answer: 'the boy is studying hard so that he can pass his exam tomorrow'
   },
   {
