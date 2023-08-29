@@ -264,6 +264,7 @@ export default function Home() {
   const handleRandom = () => {
     setRandomPicture(randomQuestion(ArrayFillterForm))
     setcheckErrorMessage('')
+    setcheckShowAnswer(false)
   }
 
   return (
@@ -286,7 +287,7 @@ export default function Home() {
             </div>
           </div>
         </div>
-        {checkShowAnswer && <div className='mt-3  lg:text-2xl text-[#05a]'>{randomPicture.answer}</div>}
+        {checkShowAnswer && <p className='mt-3 select-none lg:text-2xl text-[#05a]'>{randomPicture.answer}</p>}
 
         <div className='mt-3  lg:text-2xl text-orange'>{handleMessageError(randomPicture.answer)} </div>
         <div>
